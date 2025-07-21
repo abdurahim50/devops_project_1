@@ -1,0 +1,47 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.env
+
+# Ignore unit test and coverage results
+.coverage
+htmlcov/
+pytest_cache/
+
+
+# Ignore Python virtual environments
+venv/
+ENV/ 
+env/
+.venv/
+env.bak/
+
+# Ignore Git metadata
+.git
+.gitignore
+.gitattributes
+
+# Ignore local config & secrets
+.env
+*.env
+*.env.local
+
+# Ignore IDE/editor configs
+.vscode/
+.idea/
+
+# Ignore Docker files that shouldn’t go in image
+.dockerignore
+Dockerfile*
+
+# Ignore logs and runtime files
+*.log
+*.pid
+
+# Ignore miscellaneous
+*.bak
+*.tmp
+*.DS_Store

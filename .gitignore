@@ -1,0 +1,57 @@
+# Virtual Environments
+venv/
+.env/
+.venv/
+env/
+ENV/
+env.bak/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+*.egg-info/
+*.egg
+*.whl
+
+# Logs and databases
+*.log
+*.log.*
+*.pid
+*.pid.*
+*.db
+*.sqlite3
+
+# Test and coverage reports
+.coverage
+.coverage.*
+htmlcov/
+pytest_cache/
+
+# IDE and editor folders
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+
+# Backup and temp files
+*.bak
+*.bak.*
+*.tmp
+*.tmp.*
+*.swp
+*.orig
+*.rej
+
+# Environment variable files
+.env
+*.env
+*.env.local
+*.env.*
+
+# Miscellaneous
+.gitattributes
+.git/
