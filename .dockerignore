@@ -45,3 +45,13 @@ Dockerfile*
 *.bak
 *.tmp
 *.DS_Store
+
+# Ignore Terraform files
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+terraform.tfstate.*
+terraform.tfvars
+*.tfvars.json
+*.tfstate.backup
+*.tfstate.*

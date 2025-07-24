@@ -55,3 +55,19 @@ pytest_cache/
 # Miscellaneous
 .gitattributes
 .git/
+
+# Ignore Terraform files
+.terraform
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+*.tfvars.json
+*.tfplan
+*.tfstate.d/
+*.tfstate.d/*
+*.tfstate.d/.terraform.lock.hcl
+*.tfstate.d/.terraform.tfstate
+*.tfstate.d/.terraform.tfstate.backup
+*.tfstate.d/.terraform.tfvars
+*.tfstate.d/.terraform.tfvars.json

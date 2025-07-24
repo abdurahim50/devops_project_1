@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = 'flaskapp-autodeployer'
         IMAGE_TAG = 'latest'
-        DOCKERHUB_REPO = 'your-dockerhub-username/flaskapp-autodeployer'
+        DOCKERHUB_REPO = 'abdurahim/flaskapp-autodeployer'
         ECR_REPO = 'aws_account_id.dkr.ecr.us-east-1.amazonaws.com/flaskapp-autodeployer'
         ACR_REPO = 'myregistry.azurecr.io/flaskapp-autodeployer'
         APP_PORT = '5000'
@@ -85,9 +85,16 @@ pipeline {
 
         stage('🔐 Login to Azure ACR') {
             steps {
-                echo '🔐 Logging in to Azure ACR...'
-                withCredentials([usernamePassword(credentialsId: 'AZURE_ACR_CREDENTIALS', usernameVariable: 'AZURE_USER', passwordVariable: 'AZURE_PASS')]) {
-                    sh "echo $AZURE_PASS | docker login $ACR_REPO --username $AZURE_USER --password-stdin"
+                echo '🔐 Logging in to Azure ACR using Service Principal...'
+                withCredentials([string(credentialsId: 'AZURE_SP_CREDENTIALS', variable: 'AZURE_CREDENTIALS_JSON')]) {
+            sh '''
+                echo "$AZURE_CREDENTIALS_JSON" > azure_auth.json
+                az login --service-principal --username $(jq -r .clientId azure_auth.json) \
+                    --password $(jq -r .clientSecret azure_auth.json) \
+                    --tenant $(jq -r .tenantId azure_auth.json)
+
+                az acr login --name <ACR_NAME>
+            '''
                 }
             }
         }
