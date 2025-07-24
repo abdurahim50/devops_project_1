@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'build' }
 
     environment {
         IMAGE_NAME = 'flaskapp-autodeployer'
